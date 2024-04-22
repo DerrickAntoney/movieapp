@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import MovieCard from'./MovieCard';
 //a89e7461
 
 const API_URL = 'https://www.omdbapi.com?apikey=a89e7461';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [movies, setMovies] = useState([])
 
   const searchMovies = async (title) => {
     const response = await fetch(`${API_URL}&s=${title}`)
     const data = await response.json()
-    console.log(data.Search)
+    setMovies(data.Search)
   }
 
   useEffect(()=>{
@@ -33,9 +34,20 @@ function App() {
           onClick={() => searchMovies(searchTerm)}
         />
       </div>
-      <div className='container'>
-
-      </div>
+      {
+        movies?.length > 0 
+        ? (
+          <div className='movies'>
+            {movies.map((movie) => (
+              <MovieCard movie1={movie}/>
+            ))}
+          </div>
+        ) : (
+          <div className='empty'>
+            <h2>No movies found</h2>
+          </div>
+        )
+      }
     </div>
   )
 }
