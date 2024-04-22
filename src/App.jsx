@@ -38,7 +38,7 @@ function App() {
       {
         movies?.length > 0 
         ? (
-          <div className='movies'>
+          <div className='container'>
             {movies.map((movie) => (
               <MovieCard movie={movie}/>
             ))}
