@@ -22,7 +22,7 @@ function App() {
 
   return (
     <div className='app'>
-      <h1>FlixMovie</h1>
+      <h1>FlixMovies</h1>
       <div className='search'>
         <input 
         placeholder='Search for a movie'
